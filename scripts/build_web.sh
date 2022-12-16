@@ -13,7 +13,7 @@ BUILD_NUM=$((BUILD_NUM + 1000000))
 echo "Build Number: $BUILD_NUM"
 
 # Build Web App
-flutter build web
+flutter build web --base-href /pokedex/web/
 
 jq '. + {build_number:$buildNumber}' --arg buildNumber "$BUILD_NUM" build/web/version.json >version.json
 mv version.json build/web/
