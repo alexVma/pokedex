@@ -1,0 +1,139 @@
+name: CI
+
+on:
+  push:
+
+
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get Flutter version from pubspec
+        run: |
+          set -e
+          FLUTTER_VERSION=$(cat pubspec.yaml | grep 'flutter:' | head -n 1 | awk '{ print $2 }' | tr -d '"' | cut -d "=" -f 2)
+          echo "FLUTTER_VERSION=${FLUTTER_VERSION}" >> $GITHUB_ENV
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - run: flutter pub get --suppress-analytics
+        name: Get Flutter Deps
+      - run: flutter pub run build_runner build
+      - name: Code Formatting
+        run: dart format -o none --set-exit-if-changed .
+      - name: Lint
+        run: flutter analyze
+
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get Flutter version from pubspec
+        run: |
+          set -e
+          FLUTTER_VERSION=$(cat pubspec.yaml | grep 'flutter:' | head -n 1 | awk '{ print $2 }' | tr -d '"' | cut -d "=" -f 2)
+          echo "FLUTTER_VERSION=${FLUTTER_VERSION}" >> $GITHUB_ENV
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - run: flutter pub get --suppress-analytics
+        name: Get Flutter Deps
+      - run: flutter pub run build_runner build
+      - name: Unit Tests
+        run: flutter test
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: Goldens
+          path: test/failures
+
+  Web:
+    runs-on: ubuntu-latest
+    needs: [Lint, Test]
+    if: always()
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Get Flutter version from pubspec
+        run: |
+          set -e
+          FLUTTER_VERSION=$(cat pubspec.yaml | grep 'flutter:' | head -n 1 | awk '{ print $2 }' | tr -d '"' | cut -d "=" -f 2)
+          echo "FLUTTER_VERSION=${FLUTTER_VERSION}" >> $GITHUB_ENV
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - run: flutter pub get --suppress-analytics
+        name: Get Flutter Deps
+
+      - name: Build
+        run: ./scripts/build_web.sh
+
+      - name: Save HTML
+        uses: actions/upload-artifact@v3
+        with:
+          name: Web
+          path: ./dist
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/master' && needs.Lint.result == 'success' && needs.Test.result == 'success'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+
+  Android:
+    runs-on: ubuntu-latest
+    needs: [Lint, Test]
+    if: always()
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Unlock secrets
+        uses: sliteteam/github-action-git-crypt-unlock@1.2.0
+        env:
+          GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
+      - uses: actions/setup-java@v2
+        with:
+          distribution: "zulu"
+          java-version: "11"
+      - name: Get Flutter version from pubspec
+        run: |
+          set -e
+          FLUTTER_VERSION=$(cat pubspec.yaml | grep 'flutter:' | head -n 1 | awk '{ print $2 }' | tr -d '"' | cut -d "=" -f 2)
+          echo "FLUTTER_VERSION=${FLUTTER_VERSION}" >> $GITHUB_ENV
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - run: flutter pub get --suppress-analytics
+        name: Get Flutter Deps
+
+      - name: Build
+        run: ./scripts/build_android.sh
+
+      - name: Save APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: APK
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+      - uses: ruby/setup-ruby@v1
+        if: github.ref == 'refs/heads/master'
+        with:
+          ruby-version: "2.7.2"
+
+      - name: Upload to Google Play
+        uses: maierj/fastlane-action@v2.2.0
+        if: github.ref == 'refs/heads/master'
+        with:
+          lane: "alphaUpload"
+          subdirectory: "android"
+
