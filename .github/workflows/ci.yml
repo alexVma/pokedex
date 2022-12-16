@@ -81,10 +81,10 @@ jobs:
           path: ./dist
 
       - name: Deploy
-        if: github.ref == 'refs/heads/master' && needs.Lint.result == 'success' && needs.Test.result == 'success'
+        if: github.ref == 'refs/heads/main' && needs.Lint.result == 'success' && needs.Test.result == 'success'
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.TOKEN }}
           publish_dir: ./dist
 
   Android:
