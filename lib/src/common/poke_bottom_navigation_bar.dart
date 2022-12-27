@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/src/features/home_page/presentation/pages/home_page.dart';
 
 class PokeBottomNavigationBar extends StatefulWidget {
+  const PokeBottomNavigationBar({super.key});
+
   @override
-  _PokeBottomNavigationBarState createState() {
-    return _PokeBottomNavigationBarState();
-  }
+  State<PokeBottomNavigationBar> createState() =>
+    _PokeBottomNavigationBarState();
+
 }
 
 class _PokeBottomNavigationBarState extends State<PokeBottomNavigationBar> {
@@ -13,12 +15,12 @@ class _PokeBottomNavigationBarState extends State<PokeBottomNavigationBar> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
-    Text(
+    const HomePage(),
+    const Text(
       'Index 1: Business',
       style: optionStyle,
     ),
-    Text(
+    const Text(
       'Index 2: School',
       style: optionStyle,
     ),

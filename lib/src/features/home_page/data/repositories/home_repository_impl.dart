@@ -48,7 +48,7 @@ class HomeRepositoryImpl implements HomeRepository {
 
       return Right(result);
     } catch (e) {
-      return Left(ServerFailure());
+      return const Left(ServerFailure());
     }
   }
 }

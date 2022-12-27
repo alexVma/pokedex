@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/simple_bloc_delegate.dart';
 import 'package:pokedex/src/common/poke_bottom_navigation_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc/bloc.dart';
 import 'package:pokedex/src/features/home_page/data/data_sources/remote_data_source.dart';
 import 'package:pokedex/src/features/home_page/data/repositories/home_repository_impl.dart';
 import 'package:pokedex/src/features/home_page/domain/use_cases/add_pokemons.dart';
@@ -21,7 +20,7 @@ void main() {
         create: (BuildContext context) => HomeBloc(addPokemonsUseCase: ap),
       )
     ],
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 
@@ -36,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: PokeBottomNavigationBar(),
+      home: const PokeBottomNavigationBar(),
     );
   }
 }

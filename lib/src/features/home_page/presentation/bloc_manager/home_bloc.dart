@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:pokedex/src/features/home_page/domain/entities/pokemon.dart';
 import 'package:pokedex/src/features/home_page/domain/use_cases/add_pokemons.dart';
 
@@ -35,6 +32,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     //  emit(WithPokemonsState(pokemons: pokemons, amount: pokemons.length));
   }
 
-  @override
+
   HomeState get initialState => HomeInitial();
 }

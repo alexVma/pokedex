@@ -15,8 +15,8 @@ class WithPokemonsState extends HomeState {
   final List<Pokemon> pokemons;
   final int amount;
 
-  WithPokemonsState({required this.pokemons, required this.amount});
+  const WithPokemonsState({required this.pokemons, required this.amount});
 
   @override
-  List<Object> get props => [this.pokemons, this.amount];
+  List<Object> get props => [pokemons, amount];
 }

@@ -4,17 +4,18 @@ import 'package:pokedex/src/features/home_page/domain/entities/pokemon.dart';
 import 'package:pokedex/src/features/home_page/presentation/bloc_manager/home_bloc.dart';
 
 class HomePage extends StatelessWidget {
-  late HomeBloc homeBloc;
+
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    homeBloc = BlocProvider.of<HomeBloc>(context);
+    HomeBloc homeBloc = BlocProvider.of<HomeBloc>(context);
 
     return BlocBuilder<HomeBloc, HomeState>(
       bloc: homeBloc,
       builder: (context, state) {
         if (state is HomeInitial) {
-          homeBloc.add(AddMorePokemons(10));
+          homeBloc.add(const AddMorePokemons(10));
           return const Center(child: CircularProgressIndicator());
         }
 
