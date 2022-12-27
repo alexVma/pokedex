@@ -6,8 +6,7 @@ class PokeBottomNavigationBar extends StatefulWidget {
 
   @override
   State<PokeBottomNavigationBar> createState() =>
-    _PokeBottomNavigationBarState();
-
+      _PokeBottomNavigationBarState();
 }
 
 class _PokeBottomNavigationBarState extends State<PokeBottomNavigationBar> {

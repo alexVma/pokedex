@@ -4,7 +4,6 @@ import 'package:pokedex/src/features/home_page/domain/entities/pokemon.dart';
 import 'package:pokedex/src/features/home_page/presentation/bloc_manager/home_bloc.dart';
 
 class HomePage extends StatelessWidget {
-
   const HomePage({super.key});
 
   @override
