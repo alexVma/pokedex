@@ -4,15 +4,15 @@ import 'dart:convert';
 
 @JsonSerializable()
 class PokemonPaginatorEntity {
+  late int count;
+  late String next;
+  late String previous;
+  late List<PokemonPaginatorResults> results;
 
-	late int count;
-	late String next;
-	late String previous;
-	late List<PokemonPaginatorResults> results;
-  
   PokemonPaginatorEntity();
 
-  factory PokemonPaginatorEntity.fromJson(Map<String, dynamic> json) => $PokemonPaginatorEntityFromJson(json);
+  factory PokemonPaginatorEntity.fromJson(Map<String, dynamic> json) =>
+      $PokemonPaginatorEntityFromJson(json);
 
   Map<String, dynamic> toJson() => $PokemonPaginatorEntityToJson(this);
 
@@ -24,13 +24,13 @@ class PokemonPaginatorEntity {
 
 @JsonSerializable()
 class PokemonPaginatorResults {
+  late String name;
+  late String url;
 
-	late String name;
-	late String url;
-  
   PokemonPaginatorResults();
 
-  factory PokemonPaginatorResults.fromJson(Map<String, dynamic> json) => $PokemonPaginatorResultsFromJson(json);
+  factory PokemonPaginatorResults.fromJson(Map<String, dynamic> json) =>
+      $PokemonPaginatorResultsFromJson(json);
 
   Map<String, dynamic> toJson() => $PokemonPaginatorResultsToJson(this);
 

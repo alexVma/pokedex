@@ -11,13 +11,13 @@ JsonConvert jsonConvert = JsonConvert();
 typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
 
 class JsonConvert {
-	static final Map<String, JsonConvertFunction> _convertFuncMap = {
-		(PokemonModelEntity).toString(): PokemonModelEntity.fromJson,
-		(PokemonModelTypes).toString(): PokemonModelTypes.fromJson,
-		(PokemonModelTypesType).toString(): PokemonModelTypesType.fromJson,
-		(PokemonPaginatorEntity).toString(): PokemonPaginatorEntity.fromJson,
-		(PokemonPaginatorResults).toString(): PokemonPaginatorResults.fromJson,
-	};
+  static final Map<String, JsonConvertFunction> _convertFuncMap = {
+    (PokemonModelEntity).toString(): PokemonModelEntity.fromJson,
+    (PokemonModelTypes).toString(): PokemonModelTypes.fromJson,
+    (PokemonModelTypesType).toString(): PokemonModelTypesType.fromJson,
+    (PokemonPaginatorEntity).toString(): PokemonPaginatorEntity.fromJson,
+    (PokemonPaginatorResults).toString(): PokemonPaginatorResults.fromJson,
+  };
 
   T? convert<T>(dynamic value) {
     if (value == null) {
@@ -51,7 +51,7 @@ class JsonConvert {
   }
 
   T? asT<T extends Object?>(dynamic value) {
-    if(value == null){
+    if (value == null) {
       return null;
     }
     if (value is T) {
@@ -93,34 +93,50 @@ class JsonConvert {
     }
   }
 
-	//list is returned by type
-	static M? _getListChildType<M>(List<Map<String, dynamic>> data) {
-		if(<PokemonModelEntity>[] is M){
-			return data.map<PokemonModelEntity>((Map<String, dynamic> e) => PokemonModelEntity.fromJson(e)).toList() as M;
-		}
-		if(<PokemonModelTypes>[] is M){
-			return data.map<PokemonModelTypes>((Map<String, dynamic> e) => PokemonModelTypes.fromJson(e)).toList() as M;
-		}
-		if(<PokemonModelTypesType>[] is M){
-			return data.map<PokemonModelTypesType>((Map<String, dynamic> e) => PokemonModelTypesType.fromJson(e)).toList() as M;
-		}
-		if(<PokemonPaginatorEntity>[] is M){
-			return data.map<PokemonPaginatorEntity>((Map<String, dynamic> e) => PokemonPaginatorEntity.fromJson(e)).toList() as M;
-		}
-		if(<PokemonPaginatorResults>[] is M){
-			return data.map<PokemonPaginatorResults>((Map<String, dynamic> e) => PokemonPaginatorResults.fromJson(e)).toList() as M;
-		}
+  //list is returned by type
+  static M? _getListChildType<M>(List<Map<String, dynamic>> data) {
+    if (<PokemonModelEntity>[] is M) {
+      return data
+          .map<PokemonModelEntity>(
+              (Map<String, dynamic> e) => PokemonModelEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<PokemonModelTypes>[] is M) {
+      return data
+          .map<PokemonModelTypes>(
+              (Map<String, dynamic> e) => PokemonModelTypes.fromJson(e))
+          .toList() as M;
+    }
+    if (<PokemonModelTypesType>[] is M) {
+      return data
+          .map<PokemonModelTypesType>(
+              (Map<String, dynamic> e) => PokemonModelTypesType.fromJson(e))
+          .toList() as M;
+    }
+    if (<PokemonPaginatorEntity>[] is M) {
+      return data
+          .map<PokemonPaginatorEntity>(
+              (Map<String, dynamic> e) => PokemonPaginatorEntity.fromJson(e))
+          .toList() as M;
+    }
+    if (<PokemonPaginatorResults>[] is M) {
+      return data
+          .map<PokemonPaginatorResults>(
+              (Map<String, dynamic> e) => PokemonPaginatorResults.fromJson(e))
+          .toList() as M;
+    }
 
-		debugPrint("${M.toString()} not found");
-	
-		return null;
-}
+    debugPrint("${M.toString()} not found");
 
-	static M? fromJsonAsT<M>(dynamic json) {
-		if (json is List) {
-			return _getListChildType<M>(json.map((e) => e as Map<String, dynamic>).toList());
-		} else {
-			return jsonConvert.asT<M>(json);
-		}
-	}
+    return null;
+  }
+
+  static M? fromJsonAsT<M>(dynamic json) {
+    if (json is List) {
+      return _getListChildType<M>(
+          json.map((e) => e as Map<String, dynamic>).toList());
+    } else {
+      return jsonConvert.asT<M>(json);
+    }
+  }
 }

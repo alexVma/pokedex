@@ -20,4 +20,3 @@ class WithPokemonsState extends HomeState {
   @override
   List<Object> get props => [this.pokemons, this.amount];
 }
-

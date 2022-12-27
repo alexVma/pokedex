@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 
 class SimpleBlocDelegate extends BlocObserver {
-
   @override
   void onEvent(Bloc bloc, Object? event) {
     super.onEvent(bloc, event);
@@ -19,5 +18,4 @@ class SimpleBlocDelegate extends BlocObserver {
     super.onError(bloc, error, stacktrace);
     // print('$error, $stacktrace');
   }
-
 }

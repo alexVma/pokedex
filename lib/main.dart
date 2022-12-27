@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:pokedex/simple_bloc_delegate.dart';
 import 'package:pokedex/src/common/poke_bottom_navigation_bar.dart';
@@ -12,9 +11,9 @@ import 'package:pokedex/src/features/home_page/presentation/bloc_manager/home_bl
 void main() {
   Bloc.observer = SimpleBlocDelegate();
 
-  RemoteDataSource rds=RemoteDataSource('https://pokeapi.co/api/v2');
-  HomeRepositoryImpl repo= HomeRepositoryImpl(remoteDataSource: rds);
-  AddPokemons ap=AddPokemons(repo);
+  RemoteDataSource rds = RemoteDataSource('https://pokeapi.co/api/v2');
+  HomeRepositoryImpl repo = HomeRepositoryImpl(remoteDataSource: rds);
+  AddPokemons ap = AddPokemons(repo);
 
   runApp(MultiBlocProvider(
     providers: [

@@ -11,7 +11,7 @@ class PokeBottomNavigationBar extends StatefulWidget {
 class _PokeBottomNavigationBarState extends State<PokeBottomNavigationBar> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     Text(
