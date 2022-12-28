@@ -13,6 +13,7 @@ void main() {
   RemoteDataSource rds = RemoteDataSource('https://pokeapi.co/api/v2');
   HomeRepositoryImpl repo = HomeRepositoryImpl(remoteDataSource: rds);
   AddPokemons ap = AddPokemons(repo);
+  WidgetsFlutterBinding.ensureInitialized();
 
   runApp(MultiBlocProvider(
     providers: [
