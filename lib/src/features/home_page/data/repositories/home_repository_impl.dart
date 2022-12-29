@@ -22,7 +22,9 @@ class HomeRepositoryImpl implements HomeRepository {
         PokemonModelEntity pme =
             await remoteDataSource.getPokemonByName(e.name);
         List<String> types = [];
-        pme.types.map((f) => types.add(f.type.name));
+        for (PokemonModelTypes f in pme.types) {
+          types.add(f.type.name);
+        }
         result.add(Pokemon(
             id: pme.id,
             name: pme.name,
@@ -30,22 +32,6 @@ class HomeRepositoryImpl implements HomeRepository {
             imageUrl:
                 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pme.id}.png'));
       }
-
-      /*    pageResult.map((e)  {
-       print(e.name);
-      /*  PokemonModelEntity pme =
-            await remoteDataSource.getPokemonByName(e.name);
-        List<String> types = [];
-        pme.types.map((f) => types.add(f.type.name));
-        result.add(Pokemon(
-            id: pme.id,
-            name: pme.name,
-            types: types,
-            imageUrl:
-                'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pme.id}.png'));*/
-      }
-      );*/
-
       return Right(result);
     } catch (e) {
       return const Left(ServerFailure());

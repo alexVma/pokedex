@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/src/features/home_page/domain/entities/pokemon.dart';
 import 'package:pokedex/src/features/home_page/presentation/widgets/my_custom_scroll_behavior.dart';
+import 'package:pokedex/src/features/home_page/presentation/widgets/pokemon_card.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 import '../bloc_manager/home_bloc.dart';
 
@@ -25,7 +27,7 @@ class _PaginatorState extends State<HomePaginator> {
   int countPokemon = 0;
 
   /// The list of all Pokemon that have been fetched so far
-  List<Pokemon> allPokemonList = [];
+  Set<Pokemon> allPokemonList = {};
 
   @override
   void initState() {
@@ -35,7 +37,9 @@ class _PaginatorState extends State<HomePaginator> {
   @override
   void dispose() {
     super.dispose();
-    allPokemonList = [];
+    allPokemonList = {};
+    countPokemon = 0;
+    pokeBloc.add(const ResetList());
   }
 
   @override
@@ -50,6 +54,7 @@ class _PaginatorState extends State<HomePaginator> {
         if (state is HomeInitial) {
           /// Send an event to the HomeBloc to fetch the next batch of Pokemon
           pokeBloc.add(AddMorePokemons(countPokemon));
+          countPokemon+=10;
           return const Center(child: CircularProgressIndicator());
         }
 
@@ -74,26 +79,42 @@ class _PaginatorState extends State<HomePaginator> {
       /// When the user has scrolled to within 200 pixels of the end of the list, fetch more Pokemon
       if (scrollController.position.pixels >=
               scrollController.position.maxScrollExtent - 200 &&
-          scrollSwitch == true) {
+          scrollSwitch) {
         scrollSwitch = false;
-        countPokemon += 10;
         pokeBloc.add(AddMorePokemons(countPokemon));
+        countPokemon += 10;
       }
     });
+
+    int crossAxisCount=2;
+    switch(getDeviceType(MediaQuery.of(context).size)) {
+      case DeviceScreenType.mobile:
+        crossAxisCount = 2;
+        break;
+      case DeviceScreenType.tablet:
+        crossAxisCount = 3;
+        break;
+      case DeviceScreenType.desktop:
+        crossAxisCount = 4;
+        break;
+      case DeviceScreenType.watch:
+        // TODO: Handle this case.
+        break;
+    }
 
     return ScrollConfiguration(
         behavior: MyCustomScrollBehavior(),
         child: GridView.count(
           shrinkWrap: true,
           controller: scrollController,
-          childAspectRatio: (1 / 1.4),
+          childAspectRatio: 1,
           physics: const ScrollPhysics(),
-          padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
-          mainAxisSpacing: 15,
+          padding: const EdgeInsets.only(top: 20, left: 5, right: 5),
+          mainAxisSpacing: 10,
           crossAxisSpacing: 10,
-          crossAxisCount: 2,
+          crossAxisCount: crossAxisCount,
           children: allPokemonList.map((entry) {
-            return Text('${entry.id}');
+            return PokemonCard(entry);
           }).toList(),
           // ),
         ));

@@ -276,4 +276,47 @@ class PokedexColors {
     900: Color(0xFFBC5583),
   });
   static const int _fairyColor0PrimaryValue = 0xFFD685AD;
+
+  static MaterialColor getByName(String typeName) {
+    switch (typeName) {
+      case 'normal':
+        return normalColor;
+      case 'fire':
+        return fireColor;
+      case 'water':
+        return waterColor;
+      case 'electric':
+        return electricColor;
+      case 'grass':
+        return grassColor;
+      case 'ice':
+        return iceColor;
+      case 'fighting':
+        return fightingColor;
+      case 'poison':
+        return poisonColor;
+      case 'ground':
+        return groundColor;
+      case 'flying':
+        return flyingColor;
+      case 'psychic':
+        return psychicColor;
+      case 'bug':
+        return bugColor;
+      case 'rock':
+        return rockColor;
+      case 'ghost':
+        return ghostColor;
+      case 'dragon':
+        return dragonColor;
+      case 'dark':
+        return darkColor;
+      case 'steel':
+        return steelColor;
+      case 'fairy':
+        return fairyColor;
+      default:
+        return normalColor;
+    }
+  }
 }

@@ -15,3 +15,10 @@ class AddMorePokemons extends HomeEvent {
   @override
   List<Object> get props => [offset];
 }
+
+class ResetList extends HomeEvent {
+  const ResetList();
+
+  @override
+  List<Object> get props => [];
+}

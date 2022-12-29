@@ -7,6 +7,8 @@ abstract class HomeState extends Equatable {
 class HomeInitial extends HomeState {
   final List<Pokemon> pokemons = [];
 
+  HomeInitial();
+
   @override
   List<Object> get props => [pokemons];
 }
@@ -19,4 +21,10 @@ class WithPokemonsState extends HomeState {
 
   @override
   List<Object> get props => [pokemons, amount];
+}
+
+class ResetState extends HomeState {
+  const ResetState();
+  @override
+  List<Object> get props => [];
 }
