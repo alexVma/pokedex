@@ -32,6 +32,11 @@ class PokemonCard extends StatelessWidget {
         pokeNumFontSize = 20;
         pokeNameFontSize = 22;
         break;
+      default:
+        borderWidth = 3;
+        pokeNumFontSize = 16;
+        pokeNameFontSize = 18;
+        break;
     }
 
     return Card(

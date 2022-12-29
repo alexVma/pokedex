@@ -54,7 +54,7 @@ class _PaginatorState extends State<HomePaginator> {
         if (state is HomeInitial) {
           /// Send an event to the HomeBloc to fetch the next batch of Pokemon
           pokeBloc.add(AddMorePokemons(countPokemon));
-          countPokemon+=10;
+          countPokemon += 10;
           return const Center(child: CircularProgressIndicator());
         }
 
@@ -86,8 +86,8 @@ class _PaginatorState extends State<HomePaginator> {
       }
     });
 
-    int crossAxisCount=2;
-    switch(getDeviceType(MediaQuery.of(context).size)) {
+    int crossAxisCount = 2;
+    switch (getDeviceType(MediaQuery.of(context).size)) {
       case DeviceScreenType.mobile:
         crossAxisCount = 2;
         break;
@@ -97,8 +97,8 @@ class _PaginatorState extends State<HomePaginator> {
       case DeviceScreenType.desktop:
         crossAxisCount = 4;
         break;
-      case DeviceScreenType.watch:
-        // TODO: Handle this case.
+      default:
+        crossAxisCount = 2;
         break;
     }
 

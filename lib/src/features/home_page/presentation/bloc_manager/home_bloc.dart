@@ -14,8 +14,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<ResetList>(_resetState);
   }
 
-  void _resetState(
-      ResetList event, Emitter<HomeState> emit){
+  void _resetState(ResetList event, Emitter<HomeState> emit) {
     emit(HomeInitial());
   }
 
