@@ -54,10 +54,14 @@ This project is in development and its current version is beta1. The main featur
 This project is licensed under the MIT License. You can find the full license [here](https://github.com/alexVma/pokedex/blob/main/LICENSE).
 
 ## Screenshots
-###SmarthPhone
+
+### SmarthPhone
+
 <img src="screenshots/1movil.png" height=512px >
 
-###Web
+
+### Web
+
 <img src="screenshots/1chrome.png" height=512px >
 
 ### Tablet
