@@ -55,36 +55,32 @@ This project is licensed under the MIT License. You can find the full license [h
 
 ## Screenshots
 
-###SmarthPhone
-
+### SmarthPhone
 <table border="0" style="border-collapse: collapse; width: 0%; height: 0px;">
 <tbody>
 <tr style="height: 0px;">
-<td style="width: 0%; height: 0px;"><img src="screenshots/1movil.png" height=512px ></td>
-<td style="width: 0%; height: 0px;"><img src="screenshots/2movil.png" height=512px ></td>
+<td style="width: 0%; height: 0px;"><img src="screenshots/1movil.png"></td>
+<td style="width: 0%; height: 0px;"><img src="screenshots/2movil.png"></td>
 </tr>
 </tbody>
 </table>
 
-
-###Web
-
+### Web
 <table border="0" style="border-collapse: collapse; width: 0%; height: 0px;">
 <tbody>
 <tr style="height: 0px;">
-<td style="width: 0%; height: 0px;"><img src="screenshots/1chrome.png" height=512px ></td>
-<td style="width: 0%; height: 0px;"><img src="screenshots/2chrome.png" height=512px ></td>
+<td style="width: 0%; height: 0px;"><img src="screenshots/1chrome.png" ></td>
+<td style="width: 0%; height: 0px;"><img src="screenshots/2chrome.png"></td>
 </tr>
 </tbody>
 </table>
 
 ### Tablet
-
 <table border="0" style="border-collapse: collapse; width: 0%; height: 0px;">
 <tbody>
 <tr style="height: 0px;">
-<td style="width: 0%; height: 0px;"><img src="screenshots/1tablet.png" height=512px ></td>
-<td style="width: 0%; height: 0px;"><img src="screenshots/2tablet.png" height=512px ></td>
+<td style="width: 0%; height: 0px;"><img src="screenshots/1tablet.png" ></td>
+<td style="width: 0%; height: 0px;"><img src="screenshots/2tablet.png"></td>
 </tr>
 </tbody>
 </table>
