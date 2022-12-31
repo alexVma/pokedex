@@ -4,9 +4,14 @@ import 'dart:convert';
 
 @JsonSerializable()
 class PokemonModelEntity {
+  @JSONField(name: "base_experience")
+  late int baseExperience;
+  late int height;
   late int id;
   late String name;
+  late int weight;
   late List<PokemonModelTypes> types;
+  late List<PokemonModelStats> stats;
 
   PokemonModelEntity();
 
@@ -50,6 +55,44 @@ class PokemonModelTypesType {
       $PokemonModelTypesTypeFromJson(json);
 
   Map<String, dynamic> toJson() => $PokemonModelTypesTypeToJson(this);
+
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
+}
+
+@JsonSerializable()
+class PokemonModelStats {
+  @JSONField(name: "base_stat")
+  late int baseStat;
+  late int effort;
+  late PokemonModelStatsStat stat;
+
+  PokemonModelStats();
+
+  factory PokemonModelStats.fromJson(Map<String, dynamic> json) =>
+      $PokemonModelStatsFromJson(json);
+
+  Map<String, dynamic> toJson() => $PokemonModelStatsToJson(this);
+
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
+}
+
+@JsonSerializable()
+class PokemonModelStatsStat {
+  late String name;
+  late String url;
+
+  PokemonModelStatsStat();
+
+  factory PokemonModelStatsStat.fromJson(Map<String, dynamic> json) =>
+      $PokemonModelStatsStatFromJson(json);
+
+  Map<String, dynamic> toJson() => $PokemonModelStatsStatToJson(this);
 
   @override
   String toString() {

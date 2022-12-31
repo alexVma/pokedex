@@ -25,10 +25,20 @@ class HomeRepositoryImpl implements HomeRepository {
         for (PokemonModelTypes f in pme.types) {
           types.add(f.type.name);
         }
+
+        List<Stats> stats = [];
+        for (PokemonModelStats pms in pme.stats) {
+          stats.add(Stats(name: pms.stat.name, baseValue: pms.baseStat));
+        }
+
         result.add(Pokemon(
             id: pme.id,
             name: pme.name,
             types: types,
+            height: pme.height,
+            weight: pme.weight,
+            baseExperience: pme.baseExperience,
+            stats: stats,
             imageUrl:
                 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pme.id}.png'));
       }

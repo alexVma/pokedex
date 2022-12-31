@@ -16,11 +16,11 @@ class _PokeBottomNavigationBarState extends State<PokeBottomNavigationBar> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomePage(),
     const Text(
-      'Index 1: Business',
+      'Index 1: fav',
       style: optionStyle,
     ),
     const Text(
-      'Index 2: School',
+      'Index 2: Config',
       style: optionStyle,
     ),
   ];

@@ -55,10 +55,32 @@ This project is licensed under the MIT License. You can find the full license [h
 
 ## Screenshots
 ###SmarthPhone
-<img src="screenshots/1movil.png" height=512px >
+<table border="0" style="border-collapse: collapse; width: 0%; height: 0px;">
+<tbody>
+<tr style="height: 0px;">
+<td style="width: 0%; height: 0px;"><img src="screenshots/1movil.png" height=512px ></td>
+<td style="width: 0%; height: 0px;"><img src="screenshots/2movil.png" height=512px ></td>
+</tr>
+</tbody>
+</table>
+
 
 ###Web
-<img src="screenshots/1chrome.png" height=512px >
+<table border="0" style="border-collapse: collapse; width: 0%; height: 0px;">
+<tbody>
+<tr style="height: 0px;">
+<td style="width: 0%; height: 0px;"><img src="screenshots/1chrome.png" height=512px ></td>
+<td style="width: 0%; height: 0px;"><img src="screenshots/2chrome.png" height=512px ></td>
+</tr>
+</tbody>
+</table>
 
 ### Tablet
-<img src="screenshots/1tablet.png" height=512px >
+<table border="0" style="border-collapse: collapse; width: 0%; height: 0px;">
+<tbody>
+<tr style="height: 0px;">
+<td style="width: 0%; height: 0px;"><img src="screenshots/1tablet.png" height=512px ></td>
+<td style="width: 0%; height: 0px;"><img src="screenshots/2tablet.png" height=512px ></td>
+</tr>
+</tbody>
+</table>

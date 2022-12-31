@@ -15,6 +15,8 @@ class JsonConvert {
     (PokemonModelEntity).toString(): PokemonModelEntity.fromJson,
     (PokemonModelTypes).toString(): PokemonModelTypes.fromJson,
     (PokemonModelTypesType).toString(): PokemonModelTypesType.fromJson,
+    (PokemonModelStats).toString(): PokemonModelStats.fromJson,
+    (PokemonModelStatsStat).toString(): PokemonModelStatsStat.fromJson,
     (PokemonPaginatorEntity).toString(): PokemonPaginatorEntity.fromJson,
     (PokemonPaginatorResults).toString(): PokemonPaginatorResults.fromJson,
   };
@@ -111,6 +113,18 @@ class JsonConvert {
       return data
           .map<PokemonModelTypesType>(
               (Map<String, dynamic> e) => PokemonModelTypesType.fromJson(e))
+          .toList() as M;
+    }
+    if (<PokemonModelStats>[] is M) {
+      return data
+          .map<PokemonModelStats>(
+              (Map<String, dynamic> e) => PokemonModelStats.fromJson(e))
+          .toList() as M;
+    }
+    if (<PokemonModelStatsStat>[] is M) {
+      return data
+          .map<PokemonModelStatsStat>(
+              (Map<String, dynamic> e) => PokemonModelStatsStat.fromJson(e))
           .toList() as M;
     }
     if (<PokemonPaginatorEntity>[] is M) {
