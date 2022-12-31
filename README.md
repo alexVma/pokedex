@@ -54,7 +54,9 @@ This project is in development and its current version is beta1. The main featur
 This project is licensed under the MIT License. You can find the full license [here](https://github.com/alexVma/pokedex/blob/main/LICENSE).
 
 ## Screenshots
+
 ###SmarthPhone
+
 <table border="0" style="border-collapse: collapse; width: 0%; height: 0px;">
 <tbody>
 <tr style="height: 0px;">
@@ -66,6 +68,7 @@ This project is licensed under the MIT License. You can find the full license [h
 
 
 ###Web
+
 <table border="0" style="border-collapse: collapse; width: 0%; height: 0px;">
 <tbody>
 <tr style="height: 0px;">
@@ -76,6 +79,7 @@ This project is licensed under the MIT License. You can find the full license [h
 </table>
 
 ### Tablet
+
 <table border="0" style="border-collapse: collapse; width: 0%; height: 0px;">
 <tbody>
 <tr style="height: 0px;">
