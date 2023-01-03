@@ -6,11 +6,12 @@ import 'package:pokedex/src/features/home_page/data/data_sources/remote_data_sou
 import 'package:pokedex/src/features/home_page/data/repositories/home_repository_impl.dart';
 import 'package:pokedex/src/features/home_page/domain/use_cases/add_pokemons.dart';
 import 'package:pokedex/src/features/home_page/presentation/bloc_manager/home_bloc.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   Bloc.observer = SimpleBlocDelegate();
-
-  RemoteDataSource rds = RemoteDataSource('https://pokeapi.co/api/v2');
+  final http.Client client = http.Client();
+  RemoteDataSource rds = RemoteDataSource(client);
   HomeRepositoryImpl repo = HomeRepositoryImpl(remoteDataSource: rds);
   AddPokemons ap = AddPokemons(repo);
   WidgetsFlutterBinding.ensureInitialized();

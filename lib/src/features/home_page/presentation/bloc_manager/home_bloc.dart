@@ -26,8 +26,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }, (data) {
       emit(WithPokemonsState(pokemons: data, amount: data.length));
     });
-
-    //  emit(WithPokemonsState(pokemons: pokemons, amount: pokemons.length));
   }
 
   HomeState get initialState => HomeInitial();
