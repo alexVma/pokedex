@@ -7,7 +7,7 @@ import 'package:pokedex/src/features/home_page/data/repositories/home_repository
 import 'package:pokedex/src/features/home_page/domain/use_cases/add_pokemons.dart';
 import 'package:pokedex/src/features/home_page/presentation/bloc_manager/home_bloc.dart';
 import 'package:http/http.dart' as http;
-
+  
 void main() {
   Bloc.observer = SimpleBlocDelegate();
   final http.Client client = http.Client();
